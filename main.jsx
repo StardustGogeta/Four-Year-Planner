@@ -15,7 +15,7 @@ class Semester extends React.Component {
 
     addCourse() {
         var code = prompt("Course code?");
-        var reg = /^[A-Z]{4}[0-9]{3}$/i;
+        var reg = /^[A-Z]{4}[0-9]{3}[A-Z]?$/i;
         if (reg.test(code)) {
             fetch("https://api.umd.io/v1/courses/" + code)
                 .then(res => res.json())
