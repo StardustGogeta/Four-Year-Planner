@@ -35,6 +35,7 @@ class Plan extends React.Component {
         }
 
         this.addCourse = this.addCourse.bind(this);
+        this.removeCourse = this.removeCourse.bind(this);
     }
 
     addCourse(semIndex) {
@@ -68,11 +69,20 @@ class Plan extends React.Component {
         }
     }
 
+    removeCourse(semIndex, courseIndex) {
+        var stateCopy = {...this.state};
+        var sem = stateCopy.semesters[semIndex];
+        sem.courses.splice(courseIndex, 1);
+        this.setState(stateCopy);
+    }
+
     render() {
         return (
             <>
                 {this.state.semesters.map((e, i) =>
-                    <Semester data={e} key={i} index={i} addCourse={this.addCourse}/>)}
+                    <Semester data={e} key={i} index={i}
+                        addCourse={this.addCourse} removeCourse={this.removeCourse}
+                    />)}
             </>
         );
     }

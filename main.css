@@ -8,9 +8,10 @@ body {
     background-color: var(--primary-bg-color);
 }
 
-td, table {
+table {
     border: 2px solid var(--primary-color);
     margin: 1em;
+    padding: .25em;
     max-width: 45vw;
 }
 
@@ -18,4 +19,37 @@ footer {
     position: absolute;
     bottom: 0;
     padding: 1em;
+}
+
+td {
+    min-width: 5em;
+    margin: 2em;
+    text-align: center;
+}
+
+th:nth-child(1) {
+    min-width: 6em;
+}
+
+th:nth-child(2) {
+    width: 100%;
+}
+
+tbody td:not(.removeCourse) {
+    border: 2px solid var(--primary-color);
+}
+
+tbody td:nth-last-of-type(1) {
+    border: none;
+}
+
+tfoot td:nth-child(1) {
+    text-align: right;
+    padding: .25em 1em;
+}
+
+.removeCourse {
+    cursor: pointer;
+    min-width: 1em;
+    width: 2em;
 }

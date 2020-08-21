@@ -1,5 +1,8 @@
 class Semester extends React.Component {
     render() {
+        var totalCredits = 0;
+        this.props.data.courses.forEach(e => {totalCredits += parseInt(e.credits)});
+
         return (
             <table>
                 <thead>
@@ -14,10 +17,16 @@ class Semester extends React.Component {
                 </thead>
                 <tbody>
                     {
-                        this.props.data.courses.map((e, i) => <Course data={e} key={i} />)
+                        this.props.data.courses.map((e, i) => <Course data={e} key={i} onRemove={e => this.props.removeCourse(this.props.index, i)}/>)
                     }
                     <AddCourse onClick={e => this.props.addCourse(this.props.index)} />
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colSpan={2}>TOTAL CREDITS:</td>
+                        <td>{totalCredits}</td>
+                    </tr>
+                </tfoot>
             </table>
         );
     }
