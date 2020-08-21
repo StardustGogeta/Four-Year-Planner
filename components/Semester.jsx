@@ -4,7 +4,7 @@ class Semester extends React.Component {
         this.props.data.courses.forEach(e => {totalCredits += parseInt(e.credits)});
 
         return (
-            <table>
+            <table className="semester">
                 <thead>
                     <tr>
                         <th colSpan={3}>{this.props.data.name}</th>

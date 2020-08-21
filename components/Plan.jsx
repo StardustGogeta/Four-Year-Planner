@@ -30,7 +30,27 @@ class Plan extends React.Component {
                             credits: "1"
                         }
                     ]
-                }
+                },
+                {
+                    name: "Fall 2021",
+                    courses: [
+                        {
+                            code: "MATH246",
+                            name: "Differential Equations for Scientists and Engineers",
+                            credits: "3"
+                        },
+                        {
+                            code: "CMSC132",
+                            name: "Object-Oriented Programming II",
+                            credits: "4"
+                        },
+                        {
+                            code: "CMSC250",
+                            name: "Discrete Structures",
+                            credits: "4"
+                        }
+                    ]
+                },
             ]
         }
 
