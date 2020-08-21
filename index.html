@@ -1,3 +1,14 @@
+<link rel="stylesheet" href="main.css">
+
+<div id="container"></div>
+<select id="themeSelect">
+    <option>Light</option>
+    <option>Dark</option>
+    <option>Twilight</option>
+</select>
+<button onclick="changeTheme(document.getElementById('themeSelect').value)">Change Theme</button>
+
+<script src="changeTheme.js"></script>
 <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
@@ -5,7 +16,3 @@
 <script src="components/Course.jsx" type="text/babel"></script>
 <script src="components/AddCourse.jsx" type="text/babel"></script>
 <script src="main.jsx" type="text/babel"></script>
-
-<link rel="stylesheet" href="main.css">
-
-<div id="container"></div>
