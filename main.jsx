@@ -1,1 +1,1 @@
-ReactDOM.render(<Semester name="Fall 2020"/>, document.getElementById("container"));
+ReactDOM.render(<Plan/>, document.getElementById("container"));
