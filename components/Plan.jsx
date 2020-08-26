@@ -5,7 +5,7 @@ class Plan extends React.Component {
 
         this.state = {
             // Test for demonstration purposes
-            semesters: [
+            /*semesters: [
                 {
                     name: "Fall 2020",
                     courses: [
@@ -51,11 +51,34 @@ class Plan extends React.Component {
                         }
                     ]
                 },
-            ]
+            ]*/
+            semesters: []
         }
 
         this.addCourse = this.addCourse.bind(this);
         this.removeCourse = this.removeCourse.bind(this);
+        this.createPlan = this.createPlan.bind(this);
+    }
+
+    createPlan() {
+        var year = parseInt(prompt("What is your first year in college?"));
+        var fallStart = prompt("Do you start in the fall? (Y/N)");
+        var fallStartBool = fallStart.toLowerCase() == "y";
+        var season = fallStartBool ? "Fall" : "Spring";
+        var otherSeason = fallStartBool ? "Spring" : "Fall";
+        var semesters = [];
+        for (var i = 0; i < 4; i++) {
+            semesters.push({
+                name: season + " " + (year + i),
+                courses: []
+            });
+            semesters.push({
+                name: otherSeason + " " + (year + i + fallStartBool),
+                courses: []
+            });
+            console.log(semesters);
+        }
+        this.setState({semesters: semesters});
     }
 
     addCourse(semIndex) {
@@ -98,12 +121,14 @@ class Plan extends React.Component {
 
     render() {
         return (
-            <>
-                {this.state.semesters.map((e, i) =>
-                    <Semester data={e} key={i} index={i}
-                        addCourse={this.addCourse} removeCourse={this.removeCourse}
-                    />)}
-            </>
+            
+            <div id="plan">
+                {this.state.semesters.length > 0 ?
+                this.state.semesters.map((e, i) =>
+                    i % 2 == 0 && // Make sure only every other semester triggers a new year block
+                    <Year data1={e} data2={this.state.semesters[i+1]} key={i} index={i} addCourse={this.addCourse} removeCourse={this.removeCourse}/>) :
+                <CreatePlan onClick={this.createPlan}/>}
+            </div>
         );
     }
 }
