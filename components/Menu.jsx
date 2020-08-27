@@ -15,6 +15,8 @@ class Menu extends React.Component {
                 Warnings
                 <br></br>
                 Errors
+                <br></br>
+                Clear Local Data
             </div>
         );
     }

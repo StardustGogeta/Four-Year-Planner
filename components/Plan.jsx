@@ -3,6 +3,8 @@ class Plan extends React.Component {
     constructor() {
         super();
 
+        var planStorage = JSON.parse(localStorage.getItem("plan")) || [];
+
         this.state = {
             // Test for demonstration purposes
             /*semesters: [
@@ -52,12 +54,16 @@ class Plan extends React.Component {
                     ]
                 },
             ]*/
-            semesters: []
+            semesters: planStorage
         }
 
         this.addCourse = this.addCourse.bind(this);
         this.removeCourse = this.removeCourse.bind(this);
         this.createPlan = this.createPlan.bind(this);
+    }
+
+    savePlan() {
+        localStorage.setItem("plan", JSON.stringify(this.state.semesters));
     }
 
     createPlan() {
@@ -79,6 +85,7 @@ class Plan extends React.Component {
             console.log(semesters);
         }
         this.setState({semesters: semesters});
+        this.savePlan();
     }
 
     addCourse(semIndex) {
@@ -101,6 +108,7 @@ class Plan extends React.Component {
                     var sem = stateCopy.semesters[semIndex];
                     sem.courses = sem.courses.concat(toAdd);
                     this.setState(stateCopy);
+                    this.savePlan();
                 })
                 .catch(err => {
                     // UMD API could be having issues, or course code could be invalid
@@ -117,6 +125,7 @@ class Plan extends React.Component {
         var sem = stateCopy.semesters[semIndex];
         sem.courses.splice(courseIndex, 1);
         this.setState(stateCopy);
+        this.savePlan();
     }
 
     render() {
